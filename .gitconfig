@@ -1,0 +1,11 @@
+[user]
+    name = William Chen
+    email = wyc1@williams.edu
+[github]
+    user = chenwilliam77
+[branch]
+    autosetuprebase = always
+[core]
+    editor = emacs -nw
+[alias]
+     hist = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --date=short
