@@ -58,7 +58,4 @@ parse_display() {
 }
 
 alias julia='julia-0.6.0'
-alias git='/apps/git/git1.9/bin/git'
 alias tmux='/usr/local/bin/tmux'
-
-source ~/.bashrc-local

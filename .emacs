@@ -32,7 +32,7 @@
 )
 
 ;; Load custom modes, e.g. Julia mode
-(load "~/julia-mode.el")
+;; (load "~/julia-mode.el")
 
 ;; Move backup files to central location
 (setq backup-directory-alist
@@ -198,3 +198,8 @@
  '(font-latex-italic-face ((((class color) (background light)) (:inherit italic :foreground "brightred"))))
  '(font-latex-math-face ((((class color) (background light)) (:foreground "brightyellow"))))
  '(font-latex-sectioning-5-face ((((type tty pc) (class color) (background light)) (:foreground "magenta" :weight bold)))))
+
+(require 'package)
+(add-to-list 'package-archives
+	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
+
