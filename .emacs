@@ -137,6 +137,16 @@
 ;; Replace string
 (global-set-key (kbd "C-c %") 'replace-string)
 
+;; Octave mode for Matlab
+(setq auto-mode-alist
+      (cons
+       '("\\.m$" . octave-mode)
+       auto-mode-alist))
+(add-hook 'octave-mode-hook (lambda ()
+  (setq indent-tabs-mode t)
+  (setq tab-stop-list (number-sequence 2 200 2))
+  (setq tab-width 4)
+  (setq indent-line-function 'insert-tab) ))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; DISPLAY
@@ -182,24 +192,49 @@
 
 ;; Custom variables
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes (quote (tsdh-dark)))
+ '(doc-view-continuous t)
  '(inhibit-startup-screen t)
  '(markdown-asymmetric-header t)
- '(markdown-enable-math t))
+ '(markdown-enable-math t)
+ '(package-selected-packages
+   (quote
+    (ac-math auto-complete auctex-lua latex-preview-pane auctex-latexmk ## auctex))))
 (custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(font-latex-bold-face ((((class color) (background light)) (:inherit bold :foreground "brightred"))))
  '(font-latex-italic-face ((((class color) (background light)) (:inherit italic :foreground "brightred"))))
  '(font-latex-math-face ((((class color) (background light)) (:foreground "brightyellow"))))
  '(font-latex-sectioning-5-face ((((type tty pc) (class color) (background light)) (:foreground "magenta" :weight bold)))))
 
+;; Allow use of MELPA
+ (require 'package)
+ (add-to-list 'package-archives
+	         '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(add-hook 'LaTeX-mode-hook 'turn-on-reftex)   ; with AUCTeX LaTeX mode
+(add-hook 'latex-mode-hook 'turn-on-reftex)   ; with Emacs latex mode
 (require 'package)
-(add-to-list 'package-archives
-	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(package-initialize)
+(require 'auto-complete-config)
+(ac-config-default)
 
+;; Activate auto-complete for latex modes (AUCTeX or Emacs' builtin one).
+(add-to-list 'ac-modes 'latex-mode)
+
+;; Activate ac-math.
+(eval-after-load "latex"
+  '(when (featurep 'auto-complete)
+     ;; See https://github.com/vspinu/ac-math
+     (require 'ac-math)
+     (defun ac-latex-mode-setup ()       ; add ac-sources to default ac-sources
+       (setq ac-sources
+         (append '(ac-source-math-unicode ac-source-math-latex ac-source-latex-commands)
+             ac-sources)))
+     (add-hook 'LaTeX-mode-hook 'ac-latex-mode-setup)))
