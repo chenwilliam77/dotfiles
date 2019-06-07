@@ -196,7 +196,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (tsdh-dark)))
+ '(custom-enabled-themes (quote (wombat)))
  '(doc-view-continuous t)
  '(inhibit-startup-screen t)
  '(markdown-asymmetric-header t)
@@ -238,3 +238,6 @@
          (append '(ac-source-math-unicode ac-source-math-latex ac-source-latex-commands)
              ac-sources)))
      (add-hook 'LaTeX-mode-hook 'ac-latex-mode-setup)))
+
+;; Disable autoindent
+(when (fboundp 'electric-indent-mode) (electric-indent-mode -1))
