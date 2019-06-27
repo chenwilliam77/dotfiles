@@ -215,29 +215,29 @@
  '(font-latex-sectioning-5-face ((((type tty pc) (class color) (background light)) (:foreground "magenta" :weight bold)))))
 
 ;; Allow use of MELPA
- (require 'package)
- (add-to-list 'package-archives
-	         '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(add-hook 'LaTeX-mode-hook 'turn-on-reftex)   ; with AUCTeX LaTeX mode
-(add-hook 'latex-mode-hook 'turn-on-reftex)   ; with Emacs latex mode
-(require 'package)
-(package-initialize)
-(require 'auto-complete-config)
-(ac-config-default)
+;;  (require 'package)
+;;  (add-to-list 'package-archives
+;; 	         '("melpa" . "http://melpa.milkbox.net/packages/") t)
+;; (add-hook 'LaTeX-mode-hook 'turn-on-reftex)   ; with AUCTeX LaTeX mode
+;; (add-hook 'latex-mode-hook 'turn-on-reftex)   ; with Emacs latex mode
+;; (require 'package)
+;; (package-initialize)
+;; (require 'auto-complete-config)
+;; (ac-config-default)
 
-;; Activate auto-complete for latex modes (AUCTeX or Emacs' builtin one).
-(add-to-list 'ac-modes 'latex-mode)
+;; ;; Activate auto-complete for latex modes (AUCTeX or Emacs' builtin one).
+;; (add-to-list 'ac-modes 'latex-mode)
 
-;; Activate ac-math.
-(eval-after-load "latex"
-  '(when (featurep 'auto-complete)
-     ;; See https://github.com/vspinu/ac-math
-     (require 'ac-math)
-     (defun ac-latex-mode-setup ()       ; add ac-sources to default ac-sources
-       (setq ac-sources
-         (append '(ac-source-math-unicode ac-source-math-latex ac-source-latex-commands)
-             ac-sources)))
-     (add-hook 'LaTeX-mode-hook 'ac-latex-mode-setup)))
+;; ;; Activate ac-math.
+;; (eval-after-load "latex"
+;;   '(when (featurep 'auto-complete)
+;;      ;; See https://github.com/vspinu/ac-math
+;;      (require 'ac-math)
+;;      (defun ac-latex-mode-setup ()       ; add ac-sources to default ac-sources
+;;        (setq ac-sources
+;;          (append '(ac-source-math-unicode ac-source-math-latex ac-source-latex-commands)
+;;              ac-sources)))
+;;      (add-hook 'LaTeX-mode-hook 'ac-latex-mode-setup)))
 
 ;; Disable autoindent
 (when (fboundp 'electric-indent-mode) (electric-indent-mode -1))
