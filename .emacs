@@ -32,7 +32,7 @@
 )
 
 ;; Load custom modes, e.g. Julia mode
-;; (load "~/julia-mode.el")
+(load "~/julia-mode.el")
 
 ;; Move backup files to central location
 (setq backup-directory-alist
@@ -196,23 +196,22 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (wombat)))
+ '(ansi-color-names-vector ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
+ '(custom-enabled-themes (quote (manoj-dark)))
  '(doc-view-continuous t)
  '(inhibit-startup-screen t)
  '(markdown-asymmetric-header t)
  '(markdown-enable-math t)
- '(package-selected-packages
-   (quote
-    (ac-math auto-complete auctex-lua latex-preview-pane auctex-latexmk ## auctex))))
+ '(package-selected-packages (quote (ac-math auto-complete auctex-lua latex-preview-pane auctex-latexmk ## auctex))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(font-latex-bold-face ((((class color) (background light)) (:inherit bold :foreground "brightred"))))
- '(font-latex-italic-face ((((class color) (background light)) (:inherit italic :foreground "brightred"))))
- '(font-latex-math-face ((((class color) (background light)) (:foreground "brightyellow"))))
- '(font-latex-sectioning-5-face ((((type tty pc) (class color) (background light)) (:foreground "magenta" :weight bold)))))
+ '(font-latex-bold-face ((((class color) (background light)) (:inherit bold :foreground "brightred"))) t)
+ '(font-latex-italic-face ((((class color) (background light)) (:inherit italic :foreground "brightred"))) t)
+ '(font-latex-math-face ((((class color) (background light)) (:foreground "brightyellow"))) t)
+ '(font-latex-sectioning-5-face ((((type tty pc) (class color) (background light)) (:foreground "magenta" :weight bold))) t))
 
 ;; Allow use of MELPA
 ;;  (require 'package)

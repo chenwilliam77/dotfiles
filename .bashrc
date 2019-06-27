@@ -57,5 +57,5 @@ parse_display() {
     echo "DISPLAY updated from $DISPLAY_OLD to $DISPLAY"
 }
 
-alias julia='julia-0.6.0'
+alias julia='julia-0.7.0'
 alias tmux='/usr/local/bin/tmux'
