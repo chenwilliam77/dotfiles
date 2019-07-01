@@ -9,3 +9,7 @@
     editor = emacs -nw
 [alias]
      hist = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --date=short
+[color]
+branch = true
+diff = true
+status = true

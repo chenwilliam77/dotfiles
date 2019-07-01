@@ -32,7 +32,7 @@
 )
 
 ;; Load custom modes, e.g. Julia mode
-(load "~/julia-mode.el")
+(load "~/dotfiles/julia-mode.el")
 
 ;; Move backup files to central location
 (setq backup-directory-alist
