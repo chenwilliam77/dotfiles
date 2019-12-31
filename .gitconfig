@@ -8,8 +8,28 @@
 [core]
     editor = emacs -nw
 [alias]
-     hist = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --date=short
+    ch = checkout
+    changes = diff --name-status -r
+    diffstat = diff --stat -r
+    hist = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --date=short
+    rm = rm --cahced
+    tracked = ls-files
+    unstage = reset HEAD
 [color]
-branch = true
-diff = true
-status = true
+    branch = true
+    diff = true
+    status = true
+    interactive = auto
+    ui = true
+pager = true
+[diff]
+    tool = meld
+[difftool]
+    prompt = false
+[include]
+    path = ~/.gitconfig-local
+[url "https://"]
+     insteadof = git://
+     pushInsteadOf = git://
+[pull]
+	rebase = true

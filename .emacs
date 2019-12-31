@@ -217,8 +217,8 @@
 ;;  (require 'package)
 ;;  (add-to-list 'package-archives
 ;; 	         '("melpa" . "http://melpa.milkbox.net/packages/") t)
-;; (add-hook 'LaTeX-mode-hook 'turn-on-reftex)   ; with AUCTeX LaTeX mode
-;; (add-hook 'latex-mode-hook 'turn-on-reftex)   ; with Emacs latex mode
+(add-hook 'LaTeX-mode-hook 'turn-on-reftex)   ; with AUCTeX LaTeX mode
+(add-hook 'latex-mode-hook 'turn-on-reftex)   ; with Emacs latex mode
 ;; (require 'package)
 ;; (package-initialize)
 ;; (require 'auto-complete-config)
