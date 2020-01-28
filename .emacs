@@ -189,6 +189,7 @@
 (set-face-background 'trailing-whitespace "brightred")
 (set-face-background 'show-paren-match "brightblack")
 (set-face-background 'show-paren-mismatch "red")
+(set-background-color "black")
 
 ;; Custom variables
 (custom-set-variables
