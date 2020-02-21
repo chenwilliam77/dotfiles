@@ -4,7 +4,7 @@
 
 ;; User details
 (setq user-full-name "William Chen")
-(setq user-mail-address "wyc1@williams.edu")
+(setq user-mail-address "chenwilliamy77@gmail.com")
 
 ;; Tabs
 (setq-default tab-width 4)
@@ -32,7 +32,8 @@
 )
 
 ;; Load custom modes, e.g. Julia mode
-(load "~/dotfiles/julia-mode.el")
+(add-to-list 'load-path "~/dotfiles")
+(require 'julia-mode)
 
 ;; Move backup files to central location
 (setq backup-directory-alist
