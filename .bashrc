@@ -60,9 +60,10 @@ parse_display() {
 alias tmux='/usr/local/bin/tmux'
 
 # Julia alias
-alias julia="/Applications/Julia-1.2.app/Contents/Resources/julia/bin/julia"
+alias julia="/Applications/Julia-1.3.app/Contents/Resources/julia/bin/julia"
 alias julia105="/Applications/Julia-1.0.app/Contents/Resources/julia/bin/julia"
 alias julia111="/Applications/Julia-1.1.app/Contents/Resources/julia/bin/julia"
 alias julia120="/Applications/Julia-1.2.app/Contents/Resources/julia/bin/julia"
-alias julia130="/Applications/Julia-1.3.app/Contents/Resources/julia/bin/julia"
+alias julia131="/Applications/Julia-1.3.app/Contents/Resources/julia/bin/julia"
 alias julia142="/Applications/Julia-1.4.app/Contents/Resources/julia/bin/julia"
+alias julia150="/Applications/Julia-1.5.app/Contents/Resources/julia/bin/julia"
