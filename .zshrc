@@ -35,6 +35,18 @@ alias mv="mv -i"
 
 export LS_COLORS=$LS_COLORS'di=1;34:'
 
+# Disable globbing on the remote path. Needed to make scp work
+alias scp='noglob scp_wrap'
+function scp_wrap {
+  local -a args
+  local i
+  for i in "$@"; do case $i in
+    (*:*) args+=($i) ;;
+    (*) args+=(${~i}) ;;
+  esac; done
+  command scp "${(@)args}"
+}
+
 # Stop graphical display popup for password when git pushing
 unset SSH_ASKPASS
 
@@ -63,10 +75,10 @@ parse_display() {
 alias tmux='/usr/local/bin/tmux'
 
 # Julia alias
-alias julia="/Applications/Julia-1.3.app/Contents/Resources/julia/bin/julia"
-alias julia105="/Applications/Julia-1.0.app/Contents/Resources/julia/bin/julia"
-alias julia111="/Applications/Julia-1.1.app/Contents/Resources/julia/bin/julia"
-alias julia120="/Applications/Julia-1.2.app/Contents/Resources/julia/bin/julia"
-alias julia131="/Applications/Julia-1.3.app/Contents/Resources/julia/bin/julia"
-alias julia142="/Applications/Julia-1.4.app/Contents/Resources/julia/bin/julia"
-alias julia150="/Applications/Julia-1.5.app/Contents/Resources/julia/bin/julia"
+alias julia="/Applications/Julia-1.3.app/Contents/Resources/julia/bin/julia --startup-file=yes"
+alias julia105="/Applications/Julia-1.0.app/Contents/Resources/julia/bin/julia --startup-file=yes"
+alias julia111="/Applications/Julia-1.1.app/Contents/Resources/julia/bin/julia --startup-file=yes"
+alias julia120="/Applications/Julia-1.2.app/Contents/Resources/julia/bin/julia --startup-file=yes"
+alias julia131="/Applications/Julia-1.3.app/Contents/Resources/julia/bin/julia --startup-file=yes"
+alias julia142="/Applications/Julia-1.4.app/Contents/Resources/julia/bin/julia --startup-file=yes"
+alias julia150="/Applications/Julia-1.5.app/Contents/Resources/julia/bin/julia --startup-file=yes"
