@@ -6,6 +6,10 @@ export TERM="xterm-256color"
 # Set default editor for command-line programs
 export EDITOR="emacs"
 
+# Bash-like navigation in zsh
+autoload -U select-word-style
+select-word-style bash
+
 # Enable substitution in the prompt.
 setopt prompt_subst
 autoload -Uz vcs_info
