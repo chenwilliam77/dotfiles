@@ -31,9 +31,29 @@
   (setq mouse-sel-mode t)
 )
 
-;; Load custom modes, e.g. Julia mode
-(add-to-list 'load-path "~/dotfiles")
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ADVANCED EDITING
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Allow installation of new emacs packages via MELPA
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(package-initialize)
+
+;; stable MELPA
+;; (require 'package)
+;; (add-to-list 'package-archives
+;;              '("melpa-stable" . "https://stable.melpa.org/packages/"))
+
+;; Load custom modes
+
+(add-to-list 'load-path "~/dotfiles") ;; Julia mode
 (require 'julia-mode)
+(add-hook 'julia-mode-hook 'company-mode) ;; use company for basic auto-completion
+
+(add-hook 'python-mode-hook 'jedi:setup) ;; Python mode via Jedi
+; (setq jedi:setup-keys t)                      ; optional
+(setq jedi:complete-on-dot t)                 ; optional
 
 ;; Move backup files to central location
 (setq backup-directory-alist
@@ -48,10 +68,10 @@
 ;; Unbind C-o (insertline, but I use C-o as my tmux prefix)
 (global-unset-key (kbd "C-o"))
 
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; ADVANCED EDITING
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Always use company-mode for autocompletion
+;; (I don't use this so I don't always use company-mode for
+;;  different languages, but the option is there)
+;; (add-hook 'after-init-hook 'global-company-mode)
 
 ;; Increment and decrement numbers
 (defun my-increment-number-decimal (&optional arg)
@@ -198,13 +218,16 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ansi-color-names-vector ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
+ '(ansi-color-names-vector
+   ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(custom-enabled-themes (quote (manoj-dark)))
  '(doc-view-continuous t)
  '(inhibit-startup-screen t)
  '(markdown-asymmetric-header t)
  '(markdown-enable-math t)
- '(package-selected-packages (quote (ac-math auto-complete auctex-lua latex-preview-pane auctex-latexmk ## auctex))))
+ '(package-selected-packages
+   (quote
+    (jedi-direx jedi elpy ac-math auto-complete auctex-lua latex-preview-pane auctex-latexmk ## auctex))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -215,16 +238,8 @@
  '(font-latex-math-face ((((class color) (background light)) (:foreground "brightyellow"))) t)
  '(font-latex-sectioning-5-face ((((type tty pc) (class color) (background light)) (:foreground "magenta" :weight bold))) t))
 
-;; Allow use of MELPA
-;;  (require 'package)
-;;  (add-to-list 'package-archives
-;; 	         '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)   ; with AUCTeX LaTeX mode
 (add-hook 'latex-mode-hook 'turn-on-reftex)   ; with Emacs latex mode
-;; (require 'package)
-;; (package-initialize)
-;; (require 'auto-complete-config)
-;; (ac-config-default)
 
 ;; ;; Activate auto-complete for latex modes (AUCTeX or Emacs' builtin one).
 ;; (add-to-list 'ac-modes 'latex-mode)
