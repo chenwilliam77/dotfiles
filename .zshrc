@@ -1,4 +1,4 @@
-# .bashrc# S
+# .zshrc
 
 # User specific aliases and functions
 export TERM="xterm-256color"
@@ -28,6 +28,7 @@ vcs_info_wrapper() {
   fi
 }
 PROMPT='%F{magenta}%/%f$(vcs_info_wrapper) %# '
+PROMPT=$(echo $PROMPT | sed 's/(base) //') # get rid of (base) from conda
 
 # Command aliases
 alias cp="cp -i"
