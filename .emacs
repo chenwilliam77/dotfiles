@@ -55,6 +55,9 @@
 ; (setq jedi:setup-keys t)                      ; optional
 (setq jedi:complete-on-dot t)                 ; optional
 
+(require 'ado-mode) ;; Stata mode
+(add-hook 'ado-mode-hook 'company-mode) ;; use company for basic auto-completion
+
 ;; Move backup files to central location
 (setq backup-directory-alist
       `((".*" . , "~/.emacs.d/backup/")))
@@ -227,7 +230,7 @@
  '(markdown-enable-math t)
  '(package-selected-packages
    (quote
-    (jedi-direx jedi elpy ac-math auto-complete auctex-lua latex-preview-pane auctex-latexmk ## auctex))))
+    (ado-mode jedi-direx jedi elpy ac-math auto-complete auctex-lua latex-preview-pane auctex-latexmk ## auctex))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
