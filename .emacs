@@ -57,6 +57,7 @@
 
 (require 'ado-mode) ;; Stata mode
 (add-hook 'ado-mode-hook 'company-mode) ;; use company for basic auto-completion
+; (setq ado-comeback-flag t)
 
 ;; Move backup files to central location
 (setq backup-directory-alist
@@ -221,16 +222,16 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ado-comeback-flag t)
  '(ansi-color-names-vector
    ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
- '(custom-enabled-themes (quote (manoj-dark)))
+ '(custom-enabled-themes '(manoj-dark))
  '(doc-view-continuous t)
  '(inhibit-startup-screen t)
  '(markdown-asymmetric-header t)
  '(markdown-enable-math t)
  '(package-selected-packages
-   (quote
-    (ado-mode jedi-direx jedi elpy ac-math auto-complete auctex-lua latex-preview-pane auctex-latexmk ## auctex))))
+   '(ado-mode jedi-direx jedi elpy ac-math auto-complete auctex-lua latex-preview-pane auctex-latexmk ## auctex)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
