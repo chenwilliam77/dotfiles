@@ -1,0 +1,42 @@
+# Local version of zshrc
+# for things specific to my computer.
+# I source the ~/dotfiles/.zshrc
+# to get my standard set up.
+
+# Some aliases
+alias wenhao="cd /Users/wyc1/Documents/research/code/wenhao_li_poisson_shocks/replication"
+alias ran="cd /Users/wyc1/Documents/work/fedra/ran"
+alias ibca="cd /Users/wyc1/Documents/research/code/IBCA"
+alias bca="cd /Users/wyc1/Documents/research/code/business_cycle_anatomy_var"
+alias ral="cd /Users/wyc1/.julia/dev/RiskAdjustedLinearizations"
+alias adobe="open -a Adobe\ Acrobat\ Reader\ DC.app"
+alias python="python3.8"
+alias julia="/Applications/Julia-1.6.app/Contents/Resources/julia/bin/julia --startup-file=yes"
+alias julia105="/Applications/Julia-1.0.app/Contents/Resources/julia/bin/julia --startup-file=yes"
+alias julia111="/Applications/Julia-1.1.app/Contents/Resources/julia/bin/julia --startup-file=yes"
+alias julia120="/Applications/Julia-1.2.app/Contents/Resources/julia/bin/julia --startup-file=yes"
+alias julia131="/Applications/Julia-1.3.app/Contents/Resources/julia/bin/julia --startup-file=yes"
+alias julia142="/Applications/Julia-1.4.app/Contents/Resources/julia/bin/julia --startup-file=yes"
+alias julia150="/Applications/Julia-1.5.app/Contents/Resources/julia/bin/julia --startup-file=yes"
+alias julia161="/Applications/Julia-1.6.app/Contents/Resources/julia/bin/julia --startup-file=yes"
+
+# FRED API key
+export FRED_API_KEY=bdd15af1d07a33905fd30c13c053d13d
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/opt/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+# source dotfiles zshrc
+source ~/dotfiles/.zshrc
