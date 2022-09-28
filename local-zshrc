@@ -19,6 +19,7 @@ alias julia131="/Applications/Julia-1.3.app/Contents/Resources/julia/bin/julia -
 alias julia142="/Applications/Julia-1.4.app/Contents/Resources/julia/bin/julia --startup-file=yes"
 alias julia150="/Applications/Julia-1.5.app/Contents/Resources/julia/bin/julia --startup-file=yes"
 alias julia161="/Applications/Julia-1.6.app/Contents/Resources/julia/bin/julia --startup-file=yes"
+alias julia181="/Applications/Julia-1.8.app/Contents/Resources/julia/bin/julia --startup-file=yes"
 
 # FRED API key
 export FRED_API_KEY=bdd15af1d07a33905fd30c13c053d13d
