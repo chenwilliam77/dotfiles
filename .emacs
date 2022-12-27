@@ -245,6 +245,7 @@
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)   ; with AUCTeX LaTeX mode
 (add-hook 'latex-mode-hook 'turn-on-reftex)   ; with Emacs latex mode
 
+(setq reftex-default-bibliography '("~/Dropbox/master_bibtex.bib"))
 ;; ;; Activate auto-complete for latex modes (AUCTeX or Emacs' builtin one).
 ;; (add-to-list 'ac-modes 'latex-mode)
 
