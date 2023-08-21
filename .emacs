@@ -53,9 +53,9 @@
 (require 'julia-mode)
 (add-hook 'julia-mode-hook 'company-mode) ;; use company for basic auto-completion
 
-(add-hook 'python-mode-hook 'jedi:setup) ;; Python mode via Jedi
+; (add-hook 'python-mode-hook 'jedi:setup) ;; Python mode via Jedi
 ; (setq jedi:setup-keys t)                      ; optional
-(setq jedi:complete-on-dot t)                 ; optional
+; (setq jedi:complete-on-dot t)                 ; optional
 
 (require 'ado-mode) ;; Stata mode
 (add-hook 'ado-mode-hook 'company-mode) ;; use company for basic auto-completion
