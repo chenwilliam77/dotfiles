@@ -185,10 +185,11 @@
 ;; Row and column numbers
 (setq column-number-mode t)
 
-;; Line numbers
-(global-linum-mode t)
-(setq linum-format "%4d ")
-(global-set-key (kbd "C-x l") 'linum-mode) ; toggle linum-mode for tmux copy-paste
+;; Line numbers. Toggle this on when using a server but not otherwise
+;; (global-linum-mode t)
+;; (setq linum-format "%4d ")
+;; (global-set-key (kbd "C-x l") 'linum-mode) ; toggle linum-mode for tmux copy-paste
+;; (set-face-foreground 'linum "brightblack")
 
 ;; Unique buffer names, e.g. filename<dir1> and filename<dir2>
 (require 'uniquify)
@@ -203,7 +204,6 @@
 
 ;; Colors
 (set-face-attribute 'region nil :inverse-video t)
-(set-face-foreground 'linum "brightblack")
 (set-face-foreground 'minibuffer-prompt "color-33")
 (set-face-foreground font-lock-builtin-face "brightmagenta")
 (set-face-foreground font-lock-comment-face "green")
@@ -224,28 +224,39 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(TeX-PDF-mode t)
+ '(TeX-source-correlate-method '((dvi . source-specials) (pdf . synctex)))
+ '(TeX-source-correlate-mode t)
+ '(TeX-source-correlate-start-server t)
+ '(TeX-view-evince-keep-focus nil)
+ '(TeX-view-program-selection
+   '((output-dvi "open")
+     (output-pdf "PDF Tools")
+     (output-html "open")))
  '(ado-comeback-flag nil)
  '(ansi-color-names-vector
    ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(custom-enabled-themes '(manoj-dark))
- '(doc-view-continuous t)
  '(inhibit-startup-screen t)
  '(markdown-asymmetric-header t)
  '(markdown-enable-math t)
  '(package-selected-packages
-   '(ado-mode jedi-direx jedi elpy ac-math auto-complete auctex-lua latex-preview-pane auctex-latexmk ## auctex)))
+   '(pdf-tools ado-mode jedi-direx jedi elpy ac-math auto-complete auctex-lua latex-preview-pane auctex-latexmk ## auctex))
+ '(preview-TeX-style-dir "/Users/wyc1/.emacs.d/elpa/auctex-13.2.2/latex"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(font-latex-bold-face ((((class color) (background light)) (:inherit bold :foreground "brightred"))) t)
- '(font-latex-italic-face ((((class color) (background light)) (:inherit italic :foreground "brightred"))) t)
- '(font-latex-math-face ((((class color) (background light)) (:foreground "brightyellow"))) t)
- '(font-latex-sectioning-5-face ((((type tty pc) (class color) (background light)) (:foreground "magenta" :weight bold))) t))
+ '(font-latex-bold-face ((((class color) (background light)) (:inherit bold :foreground "brightred"))))
+ '(font-latex-italic-face ((((class color) (background light)) (:inherit italic :foreground "brightred"))))
+ '(font-latex-math-face ((((class color) (background light)) (:foreground "brightyellow"))))
+ '(font-latex-sectioning-5-face ((((type tty pc) (class color) (background light)) (:foreground "magenta" :weight bold)))))
 
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)   ; with AUCTeX LaTeX mode
 (add-hook 'latex-mode-hook 'turn-on-reftex)   ; with Emacs latex mode
+
+;;(setq-default dotspacemacs-configuration-layers '(pdf))
 
 (setq reftex-default-bibliography '("~/Dropbox/master_bibtex.bib"))
 ;; ;; Activate auto-complete for latex modes (AUCTeX or Emacs' builtin one).
@@ -263,4 +274,12 @@
 ;;      (add-hook 'LaTeX-mode-hook 'ac-latex-mode-setup)))
 
 ;; Disable autoindent
-(when (fboundp 'electric-indent-mode) (electric-indent-mode -1))
+
+;; pdf-tools
+(pdf-tools-install)
+(pdf-loader-install)
+(add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
+
+(eval-after-load "tex"
+  '(define-key TeX-source-correlate-map [C-down-mouse-1]
+               #'TeX-view-mouse))
