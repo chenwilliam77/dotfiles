@@ -33,3 +33,5 @@ pager = true
      pushInsteadOf = git://
 [pull]
 	rebase = true
+[init]
+	defaultBranch = main
